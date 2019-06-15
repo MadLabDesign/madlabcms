@@ -1,14 +1,15 @@
 import React from "react";
 import MainMenu from "./MainMenu";
-import Header from "./header";
+import "../assets/styles.css";
 
 import styled, { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 body{
-  font-family: 'Open Sans', sans-serif;
+  font-family: "metropolis-regular";
   margin: 0 !important;
   padding: 0 !important;
+
 }
 `;
 
