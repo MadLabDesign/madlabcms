@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Madlab Design`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`
+    author: `@madlab`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -110,7 +110,9 @@ module.exports = {
           "**/taxonomies",
           "**/users",
           "**/menus",
-          "**/*/*/portfolio"
+          "**/*/*/portfolio",
+          "**/logo",
+          "**/favicon"
         ],
         // Blacklisted routes using glob patterns
         excludedRoutes: [],
