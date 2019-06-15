@@ -1,9 +1,7 @@
 import React from "react";
 import { graphql, StaticQuery, Link } from "gatsby";
 import styled from "styled-components";
-
 import SiteInfo from "./SiteInfo";
-
 const MainMenuWrapper = styled.div`
   display: flex;
   background-color: #000;
