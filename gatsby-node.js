@@ -80,7 +80,7 @@ exports.createPages = ({ graphql, actions }) => {
       })
       // ==== END PAGES ====
 
-      // ==== POSTS (WORDPRESS NATIVE AND ACF) ====
+      // ==== PORTFOLIO (WORDPRESS NATIVE AND ACF) ====
       .then(() => {
         graphql(
           `
@@ -122,9 +122,63 @@ exports.createPages = ({ graphql, actions }) => {
               context: edge.node
             });
           });
+        });
+      })
+      // ==== END PORTFOLIO  ====
+      // ==== BLOG POST (WORDPRESS NATIVE AND ACF) ====
+      .then(() => {
+        graphql(`
+          {
+            allWordpressPost {
+              edges {
+                node {
+                  excerpt
+                  wordpress_id
+                  date(formatString: "Do MMM YYYY HH:mm")
+                  title
+                  content
+                  slug
+                }
+              }
+            }
+          }
+        `).then(result => {
+          if (result.errors) {
+            console.log(result.errors);
+            reject(result.errors);
+          }
+
+          const posts = result.data.allWordpressPost.edges;
+          const postsPerPage = 2;
+          const numberOfPages = Math.ceil(posts.length / postsPerPage);
+          const blogPostListTemplate = path.resolve(
+            "./src/templates/blogPostList.js"
+          );
+
+          Array.from({ length: numberOfPages }).forEach((page, index) => {
+            createPage({
+              component: slash(blogPostListTemplate),
+              path: index === 0 ? "/blog" : `/blog/${index + 1}`,
+              context: {
+                posts: posts.slice(
+                  index * postsPerPage,
+                  index * postsPerPage + postsPerPage
+                ),
+                numberOfPages,
+                currentPage: index + 1
+              }
+            });
+          });
+          const pageTemplate = path.resolve("./src/templates/page.js");
+          _.each(posts, post => {
+            createPage({
+              path: `/post/${post.node.slug}`,
+              component: slash(pageTemplate),
+              context: post.node
+            });
+          });
           resolve();
         });
       });
-    // ==== END POSTS ====
   });
 };
