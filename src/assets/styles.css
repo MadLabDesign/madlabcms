@@ -7,19 +7,19 @@
  * domine
 ================================================================================ */
 @font-face {
-  font-family: "domine-regular";
-  src: local("domine-regular"),
-    url("./fonts/domine/domine-regular-webfont.woff2") format("woff2"),
-    url("./fonts/domine/domine-regular-webfont.woff") format("woff");
+  font-family: 'domine-regular';
+  src: local('domine-regular'),
+    url('./fonts/domine/domine-regular-webfont.woff2') format('woff2'),
+    url('./fonts/domine/domine-regular-webfont.woff') format('woff');
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "domine-bold";
-  src: local("domine-bold"),
-    url("./fonts/domine/domine-bold-webfont.woff2") format("woff2"),
-    url("./fonts/domine/domine-bold-webfont.woff") format("woff");
+  font-family: 'domine-bold';
+  src: local('domine-bold'),
+    url('./fonts/domine/domine-bold-webfont.woff2') format('woff2'),
+    url('./fonts/domine/domine-bold-webfont.woff') format('woff');
   font-style: normal;
   font-weight: normal;
 }
@@ -28,71 +28,82 @@
    * metropolis
   ================================================================================ */
 @font-face {
-  font-family: "metropolis-bold";
-  src: local("metropolis-bold"),
-    url("./fonts/metropolis/metropolis-bold-webfont.woff2") format("woff2"),
-    url("./fonts/metropolis/metropolis-bold-webfont.woff") format("woff");
+  font-family: 'metropolis-bold';
+  src: local('metropolis-bold'),
+    url('./fonts/metropolis/metropolis-bold-webfont.woff2') format('woff2'),
+    url('./fonts/metropolis/metropolis-bold-webfont.woff') format('woff');
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "metropolis-semibold";
-  src: local("metropolis-semibold"),
-    url("./fonts/metropolis/metropolis-semibold-webfont.woff2") format("woff2"),
-    url("./fonts/metropolis/metropolis-semibold-webfont.woff") format("woff");
+  font-family: 'metropolis-semibold';
+  src: local('metropolis-semibold'),
+    url('./fonts/metropolis/metropolis-semibold-webfont.woff2') format('woff2'),
+    url('./fonts/metropolis/metropolis-semibold-webfont.woff') format('woff');
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "metropolis-medium";
-  src: local("metropolis-medium"),
-    url("./fonts/metropolis/metropolis-medium-webfont.woff2") format("woff2"),
-    url("./fonts/metropolis/metropolis-medium-webfont.woff") format("woff");
+  font-family: 'metropolis-medium';
+  src: local('metropolis-medium'),
+    url('./fonts/metropolis/metropolis-medium-webfont.woff2') format('woff2'),
+    url('./fonts/metropolis/metropolis-medium-webfont.woff') format('woff');
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "metropolis-regular";
-  src: local("metropolis-regular"),
-    url("./fonts/metropolis/metropolis-regular-webfont.woff2") format("woff2"),
-    url("./fonts/metropolis/metropolis-regular-webfont.woff") format("woff");
+  font-family: 'metropolis-regular';
+  src: local('metropolis-regular'),
+    url('./fonts/metropolis/metropolis-regular-webfont.woff2') format('woff2'),
+    url('./fonts/metropolis/metropolis-regular-webfont.woff') format('woff');
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "metropolis-light";
-  src: local("metropolis-light"),
-    url("./fonts/metropolis/metropolis-light-webfont.woff2") format("woff2"),
-    url("./fonts/metropolis/metropolis-light-webfont.woff") format("woff");
+  font-family: 'metropolis-light';
+  src: local('metropolis-light'),
+    url('./fonts/metropolis/metropolis-light-webfont.woff2') format('woff2'),
+    url('./fonts/metropolis/metropolis-light-webfont.woff') format('woff');
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "metropolis-extralight";
-  src: local("metropolis-extralight"),
-    url("./fonts/metropolis/metropolis-extralight-webfont.woff2")
-      format("woff2"),
-    url("./fonts/metropolis/metropolis-extralight-webfont.woff") format("woff");
+  font-family: 'metropolis-extralight';
+  src: local('metropolis-extralight'),
+    url('./fonts/metropolis/metropolis-extralight-webfont.woff2')
+      format('woff2'),
+    url('./fonts/metropolis/metropolis-extralight-webfont.woff') format('woff');
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "metropolis-italic";
-  src: local("metropolis-italic"),
-    url("./fonts/metropolis/metropolis-regularitalic-webfont.woff2")
-      format("woff2"),
-    url("./fonts/metropolis/metropolis-regularitalic-webfont.woff")
-      format("woff");
+  font-family: 'metropolis-italic';
+  src: local('metropolis-italic'),
+    url('./fonts/metropolis/metropolis-regularitalic-webfont.woff2')
+      format('woff2'),
+    url('./fonts/metropolis/metropolis-regularitalic-webfont.woff')
+      format('woff');
   font-style: normal;
   font-weight: normal;
 }
 
 /*# sourceMappingURL=fonts.css.map */
 
-@import url("https://fonts.googleapis.com/css?family=Heebo:100,300,400&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Heebo:100,300,400&display=swap');
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 2 !important;
+  letter-spacing: 0.01rem;
+  color: rgba(255, 255, 255, 0.7);
+}

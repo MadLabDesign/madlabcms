@@ -12,10 +12,10 @@ const slash = require(`slash`);
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
   createRedirect({
-    fromPath: "/",
-    toPath: "/home",
+    fromPath: '/',
+    toPath: '/home',
     redirectInBrowser: true,
-    isPermanent: true
+    isPermanent: true,
   });
 
   return new Promise((resolve, reject) => {
@@ -42,7 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
-      `
+      `,
     )
       .then(result => {
         if (result.errors) {
@@ -51,9 +51,9 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         // Create Page pages.
-        const pageTemplate = path.resolve("./src/templates/page.js");
+        const pageTemplate = path.resolve('./src/templates/page.js');
         const portfolioUnderContentTemplate = path.resolve(
-          "./src/templates/portfolioUnderContent.js"
+          './src/templates/portfolioUnderContent.js',
         );
         // We want to create a detailed page for each
         // page node. We'll just use the WordPress Slug for the slug.
@@ -70,16 +70,15 @@ exports.createPages = ({ graphql, actions }) => {
             // can query data specific to each page.
             path: `/${edge.node.slug}/`,
             component: slash(
-              edge.node.template === "portfolio_under_content.php"
+              edge.node.template === 'portfolio_under_content.php'
                 ? portfolioUnderContentTemplate
-                : pageTemplate
+                : pageTemplate,
             ),
-            context: edge.node
+            context: edge.node,
           });
         });
       })
       // ==== END PAGES ====
-
       // ==== PORTFOLIO (WORDPRESS NATIVE AND ACF) ====
       .then(() => {
         graphql(
@@ -103,14 +102,14 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-          `
+          `,
         ).then(result => {
           if (result.errors) {
             console.log(result.errors);
             reject(result.errors);
           }
           const portfolioTemplate = path.resolve(
-            "./src/templates/portfolio.js"
+            './src/templates/portfolio.js',
           );
           // We want to create a detailed page for each
           // post node. We'll just use the WordPress Slug for the slug.
@@ -119,7 +118,52 @@ exports.createPages = ({ graphql, actions }) => {
             createPage({
               path: `/portfolio/${edge.node.slug}/`,
               component: slash(portfolioTemplate),
-              context: edge.node
+              context: edge.node,
+            });
+          });
+        });
+      })
+      // ==== END PORTFOLIO  ====
+      // ==== PORTFOLIO (WORDPRESS NATIVE AND ACF) ====
+      .then(() => {
+        graphql(
+          `
+            {
+              allWordpressWpPortfolio {
+                edges {
+                  node {
+                    id
+                    title
+                    slug
+                    excerpt
+                    content
+                    featured_media {
+                      source_url
+                    }
+                    acf {
+                      portfolio_url
+                    }
+                  }
+                }
+              }
+            }
+          `,
+        ).then(result => {
+          if (result.errors) {
+            console.log(result.errors);
+            reject(result.errors);
+          }
+          const portfolioTemplate = path.resolve(
+            './src/templates/portfolio.js',
+          );
+          // We want to create a detailed page for each
+          // post node. We'll just use the WordPress Slug for the slug.
+          // The Post ID is prefixed with 'POST_'
+          _.each(result.data.allWordpressWpPortfolio.edges, edge => {
+            createPage({
+              path: `/portfolio/${edge.node.slug}/`,
+              component: slash(portfolioTemplate),
+              context: edge.node,
             });
           });
         });
@@ -152,29 +196,29 @@ exports.createPages = ({ graphql, actions }) => {
           const postsPerPage = 2;
           const numberOfPages = Math.ceil(posts.length / postsPerPage);
           const blogPostListTemplate = path.resolve(
-            "./src/templates/blogPostList.js"
+            './src/templates/blogPostList.js',
           );
 
           Array.from({ length: numberOfPages }).forEach((page, index) => {
             createPage({
               component: slash(blogPostListTemplate),
-              path: index === 0 ? "/blog" : `/blog/${index + 1}`,
+              path: index === 0 ? '/blog' : `/blog/${index + 1}`,
               context: {
                 posts: posts.slice(
                   index * postsPerPage,
-                  index * postsPerPage + postsPerPage
+                  index * postsPerPage + postsPerPage,
                 ),
                 numberOfPages,
-                currentPage: index + 1
-              }
+                currentPage: index + 1,
+              },
             });
           });
-          const pageTemplate = path.resolve("./src/templates/page.js");
+          const pageTemplate = path.resolve('./src/templates/page.js');
           _.each(posts, post => {
             createPage({
               path: `/post/${post.node.slug}`,
               component: slash(pageTemplate),
-              context: post.node
+              context: post.node,
             });
           });
           resolve();
