@@ -106,8 +106,7 @@ module.exports = {
           '**/categories',
           '**/posts',
           '**/pages',
-          '**/homeland',
-
+          '**/HomePage',
           '**/media',
           '**/tags',
           '**/taxonomies',

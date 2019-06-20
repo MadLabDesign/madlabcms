@@ -3,6 +3,6 @@
     "fromPath": "/",
     "isPermanent": true,
     "redirectInBrowser": true,
-    "toPath": "/home"
+    "toPath": "home"
   }
 ]
